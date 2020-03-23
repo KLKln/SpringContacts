@@ -15,8 +15,8 @@ import dmacc.beans.Contact;
 import dmacc.controller.BeanConfiguration;
 import dmacc.repository.ContactRepository;
 
-/*
-@SpringBootApplication public class SpringContactsApplication { 
+
+/*@SpringBootApplication public class SpringContactsApplication { 
  public static void main(String[] args) {   
 	 SpringApplication.run(SpringContactsApplication.class, args); 
 	 
@@ -30,7 +30,8 @@ import dmacc.repository.ContactRepository;
 } */
 
 @SpringBootApplication
-public class SpringContactsApplication implements CommandLineRunner {
+public class SpringContactsApplication{
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringContactsApplication.class, args);
 	}
@@ -38,7 +39,7 @@ public class SpringContactsApplication implements CommandLineRunner {
 	@Autowired
 	ContactRepository repo;
 
-	@Override  public void run(String... args) throws Exception {   
+	/*@Override  public void run(String... args) throws Exception {   
 		// TODO Auto-generated method stub      
 		
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class); 
@@ -58,5 +59,5 @@ public class SpringContactsApplication implements CommandLineRunner {
 				
 	}
 		((AbstractApplicationContext)appContext).close();
-}
+}*/
 	}
