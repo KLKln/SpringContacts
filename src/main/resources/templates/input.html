@@ -19,7 +19,7 @@
     // regular expression to match only alphanumeric characters and spaces
     var re = /^[\w ]+$/;
 
-    // validation fails if the name input doesn't use alphabet characters
+    // validation fails if the name input doesn't use alphanumeric characters
     if(!re.test(myForm.name.value)) {
       alert("Error: Name contains invalid characters!");
       myForm.name.focus();
@@ -33,12 +33,19 @@
     }
     
     var re = /^[\w ]+$/;
-    // validation fails if the relationship input isn't in alphabet characters
+    // validation fails if the relationship input isn't in alphanumeric characters
     if(!re.test(myForm.relationship.value)) {
       alert("Error: Relationship contains invalid characters!");
       myForm.relationship.focus();
       return false;
     } 
+    
+    //validation fails if phone field is empty
+    if(myForm.phone.value == ""){
+    	alert("Error: Phone is empty!");
+        myForm.phone.focus();
+        return false;
+    }
     
     //validation fails if phone numbers aren't numbers
     var numbers = /^[0-9]+$/;
@@ -51,7 +58,7 @@
     	myForm.phone.focus();
     	return false;
     }
-    
+      
 
     // validation was successful
     return true;
