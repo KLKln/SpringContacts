@@ -4,14 +4,71 @@
 <meta charset="ISO-8859-1">
 <title>Insert New or Edit Contact</title>
 </head>
+
+<script>
+
+  function checkForm()
+  {
+    // validation fails if the name input is blank
+    if(myForm.name.value == "") {
+      alert("Error: Name is empty!");
+      myForm.name.focus();
+      return false;
+    }
+
+    // regular expression to match only alphanumeric characters and spaces
+    var re = /^[\w ]+$/;
+
+    // validation fails if the name input doesn't use alphabet characters
+    if(!re.test(myForm.name.value)) {
+      alert("Error: Name contains invalid characters!");
+      myForm.name.focus();
+      return false;
+    }
+    //validation fails if relationship field is blank
+    if(myForm.relationship.value == ""){
+    	alert("Error: Relationship is empty!");
+        myForm.relationship.focus();
+        return false;
+    }
+    
+    var re = /^[\w ]+$/;
+    // validation fails if the relationship input isn't in alphabet characters
+    if(!re.test(myForm.relationship.value)) {
+      alert("Error: Relationship contains invalid characters!");
+      myForm.relationship.focus();
+      return false;
+    } 
+    
+    //validation fails if phone numbers aren't numbers
+    var numbers = /^[0-9]+$/;
+    if(myForm.phone.value.match(numbers))
+    	{
+    	return true;
+    	}
+    else{
+    	alert("Number only for phone number!");
+    	myForm.phone.focus();
+    	return false;
+    }
+    
+
+    // validation was successful
+    return true;
+  }
+  
+
+</script>
+
 <body>
-<form th:object="${newContact}" th:action="@{/update/{id}(id=${newContact.id})}" method=POST>
+<form name = "myForm" th:object="${newContact}" th:action="@{/update/{id}(id=${newContact.id})}" onsubmit="return checkForm()" method=POST>
 Name: <input name="name" size="20" th:field="*{name}"><br />
 Relationship: <input name="relationship" size="20" th:field="*{relationship}"><br />
 Phone Number: <input name="phone" size="20" th:field="*{phone}"><br />
 Street: <input name="address.street" size="20" th:field="*{address.street}"><br />
 City: <input name="address.city" size="20" th:field="*{address.city}"><br />
 State: <input name="address.state" size="20" th:field="*{address.state}"><br />
+
 
 <input name="Submit" type="submit" value="submit" />
 </form>
